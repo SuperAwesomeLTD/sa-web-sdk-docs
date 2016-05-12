@@ -42,14 +42,14 @@ Below you can find a description of all mobile placement types, as well as test 
 ==================  ==========  =============================   ==============
 Name                Size        Description                     Test Placement
 ==================  ==========  =============================   ==============
-Standard Mobile     320x50px    Mobile banner                   30471
-SM Mobile           300x50px    Small mobile banner             30476
-Interstitial        320x480px   Mobile fullscreen (portrait)    30473
-Interstitial LS     480x320px   Mobile fullscreen (landscape)   30474
-Leaderboard         728x90px    Tablet banner                   30475
-MPU                 300x250px   Smaller tablet banner           30472
-LG Interstitial     768x1024px  Tablet fullscreen (portrait)    30477
-LG Interstitial LS  1024x768px  Tablet fullscreen (landscape)   30478
-Video Preroll       Flexible    Mobile & tablet video           30479
-Gamewall            Flexible    Gamewall                        N/A
+Small Leaderboard   468x60px    A small desktop leaderboard     31430
+Leaderboard         728x90px    Desktop leaderboard             31428
+Billboard           970x250px   A big billboard                 31436
+MPU                 300x250px   A small MPU unit                31429
+Double MPU          300x600px   A big MPU unit                  31432
+Skinny Skyscraper   120x600px   A small skyscraper              31431
+Skyscraper          160x600px   A big skyscraper                31435
+Page Skin           1x1px       A variable size site skin       31433
+Floor Ad            1x1px       A variable size floor ad        30789
+Desktop Preroll     1x1         Desktop video                   30479
 ==================  ==========  =============================   ==============

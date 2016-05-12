@@ -22,9 +22,7 @@ Table of Contents:
 
    Initial setup <01dashboard>
    Integrate the SDK <02integrate>
-   Configure the SDK <03config>
-   Load ads <04load>
-   Display ads <05display>
-   Parental gate <06parentalgate>
-   Ad callbacks <07callbacks>
-   Examples <08examples>
+   Display ads <03display>
+   Video ads <04video>
+   Interstitial ads <05interstitial>
+   Examples <06examples>
