@@ -28,6 +28,7 @@ Placement    placement=31428                      Required
 Test         test=true                            Optional
 Video        video=true                           Only for videos
 Interstitial interstitial=true                    Optional, best for mobile
+Small click  smallclick=true                      Optional, for video
 ============ ==================================== =========================
 
 In this scenario ads are added to your web app on page load.

@@ -12,7 +12,7 @@ Video ads can be embedded just as easily as display ads, by either going to the 
 
     <div id="preroll">
         <script type="text/javascript"
-                src="https://ads.superawesome.tv/v2/ad.js?placement=30479&video=true&test=true">
+                src="https://ads.superawesome.tv/v2/ad.js?placement=30479&video=true&test=true&smallclick=true">
         </script>
     </div>
 
@@ -38,7 +38,9 @@ adding a script video wrapper instead:
     <script type="text/javascript"
         src="http://ads.superawesome.tv/v2/adwrapper.js?placement=30479"
         data-test-enabled="true"
-        data-post-ad-container="preroll">
+        data-post-ad-container="preroll"
+        data-has-small-click="true"
+        data-is-skippable="true">
     </script>
 
 Notice that the containing div and the script tag are separate.
@@ -46,6 +48,8 @@ Also note that the script tag contains some additional parameters:
 
  * data-test-enabled: can be true or false
  * data-post-ad-container: where the ad should be placed
+ * data-has-small-click: whether the whole video surface is clickable, or just a "Find out more" button in the bottom-left part of the screen
+ * data-is-skippable: whether video is skippable (only for videos > 30s)
 
 Also note that the source parameter of the script tag must only contain the placement format.
 
@@ -65,7 +69,7 @@ Finally, if you want to add the video as a Javascript object:
         (function() {
 
             var mov = document.getElementById("movie");
-            var vid = new AwesomeVideo(30479, true, mov).write();
+            var vid = new AwesomeVideo(30479, true, mov, false).write();
 
         })();
 
@@ -76,6 +80,7 @@ The AwesomeVideo function has three parameters:
   * the Id of the placement to be loaded
   * if test is enabled or not
   * the DOM element to render the video to
+  * whether the whole video surface is clickable or not
 
 Result
 ^^^^^^
