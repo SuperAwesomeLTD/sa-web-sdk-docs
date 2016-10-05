@@ -9,7 +9,7 @@ The SuperAwesome Web SDK (Software Development Kit) lets you to easily add COPPA
 =========== ========
 Info        Contents
 =========== ========
-Version     <sdk_version_web>
+Version     <sdk_version>
 GitHub      <sdk_source>
 Support     `<sdk_devsuspport> <mailto:<sdk_devsuspport>>`_
 License     `LICENSE <https://raw.githubusercontent.com/SuperAwesomeLTD/sa-web-sdk-docs/master/LICENSE>`_

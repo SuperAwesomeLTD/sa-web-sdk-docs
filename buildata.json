@@ -1,0 +1,19 @@
+{
+	"id": "sa-web-sdk",
+	"theme": {
+		"folder": "themes",
+		"res": "themeres",
+		"name": "satheme"
+	},
+	"project": {
+		"name": "Web SDK",
+		"author": "Gabriel Coman",
+		"source": "https://github.com/SuperAwesomeLTD/sa-web-sdk-docs",
+		"domain": "Awesome Ads",
+		"min": ""
+	},
+	"company": {
+		"name": "2016, SuperAwesome Ltd",
+		"support": "devsupport@superawesome.tv"
+	}
+}
