@@ -18,18 +18,19 @@ They will always have this format:
             src="https://ads.superawesome.tv/v2/ad.js?placement=31428">
     </script>
 
-The source parameter can contain a number of important elements:
+The source URL can contain a number of parameters:
 
-============ ==================================== =========================
-Element      Value                                Notes
-============ ==================================== =========================
-Base URL     https://ads.superawesome.tv/v2/ad.js Required
-Placement    placement=31428                      Required
-Test         test=true                            Optional
-Video        video=true                           Only for videos
-Interstitial interstitial=true                    Optional, best for mobile
-Small click  smallclick=true                      Optional, for video
-============ ==================================== =========================
+================== ======= ========================== ========================================================================================= ==========================
+Parameter          Value   Example                    Description                                                                               Notes
+================== ======= ========================== ========================================================================================= ==========================
+placement          Number  placement=31428            Indicates the ID of the placement to be loaded                                            Required
+test               Boolean test=true                  If set to true, will ignore the placement ID and load the demo ad all the time            Optional
+video              Boolean video=true                 Should always be set to true for video                                                    Required (for video)
+interstitial       Boolean interstitial=true          Set to true if the creative is going to be displayed as an interstitial                   Optional (best for mobile)
+smallclick         Boolean smallclick=true            When set to true, the video is going to have a small button for the user to click through Optional (for video)
+click_tracking_url String  click_tracking_url=[click] Replace [click] with your ad server click macro, to be able to count clicks               Optional
+keywords           String  keywords=key1+key2+key3    Add one ore more keywords to the placement, separated by "+"                              Optional
+================== ======= ========================== ========================================================================================= ==========================
 
 In this scenario ads are added to your web app on page load.
 
