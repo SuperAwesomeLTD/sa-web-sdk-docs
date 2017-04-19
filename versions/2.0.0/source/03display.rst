@@ -46,18 +46,18 @@ the **Integrate the SDK** chapter), then:
     <script type="text/javascript">
         (function() {
 
-						// parent element
-						var el = document.getElementById("top_leaaderboard")
+            // parent element
+            var el = document.getElementById("top_leaaderboard")
 
-						// create a new AwesomeDisplay object
+            // create a new AwesomeDisplay object
             var ad = new AwesomeDisplay(31428).test();
 
-						// add callbacks
-						ad.onEmpty (function() {
-							console.log('empty callback')
-						})
+            // add callbacks
+            ad.onEmpty (function() {
+              console.log('empty callback')
+            })
 
-						// append element
+            // append element
             el.appendChild(ad.element);
 
         })();
