@@ -68,18 +68,25 @@ Finally, if you want to add the video as a Javascript object:
 
         (function() {
 
+						// get the target document
             var mov = document.getElementById("movie");
+
+						// create a new AwesomeVideo object
             var vid = new AwesomeVideo(30479, false, mov, false);
-            vid.write();
-            vid.onErrorCallback = function () {
+
+						// add callbacks
+						vid.onError (function () {
               console.log('error callabck');
-            }
-            vid.onEmptyCallback = function () {
+            })
+            vid.onEmpty (function () {
               console.log('empty callabck');
-            }
-            vid.onFinishedCallback = function () {
+            })
+            vid.onFinished (function () {
               console.log('finished callabck');
-            }
+            })
+
+						// write the video
+						vid.write();
 
         })();
 
