@@ -3,13 +3,14 @@
 	"theme": {
 		"folder": "themes",
 		"res": "themeres",
-		"name": "satheme"
+		"name": "satheme",
+		"color": "256EFF"
 	},
 	"project": {
 		"name": "Web SDK",
 		"author": "Gabriel Coman",
 		"source": "https://github.com/SuperAwesomeLTD/sa-web-sdk-docs",
-		"domain": "Awesome Ads",
+		"domain": "",
 		"min": ""
 	},
 	"company": {
