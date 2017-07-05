@@ -25,4 +25,5 @@ Table of Contents:
    Display ads <03display>
    Video ads <04video>
    Interstitial ads <05interstitial>
-   Examples <06examples>
+	 Server to server <06s2s>
+   Examples <07examples>
