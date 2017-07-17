@@ -35,6 +35,7 @@ domain             yes      example.com         Required only if applicationType
 connectionType     no       2
 lang               no       en_US               Current Language and Locale
 interstitial       no       true | false        Force fullscreen presentation (for web)
+test               no       true | false        Whether to force a test creative or not
 ================== ======== =================== =======
 
 Thus, an example request **Body** would look like this:
@@ -48,7 +49,8 @@ Thus, an example request **Body** would look like this:
       "companyId": 1,
       "interstitial": true,
       "domain":"google.com",
-      "ip": "182.21.122.189"
+      "ip": "182.21.122.189",
+      "test": true
     }
 
 And a full request example using cURL would look like this:
@@ -66,7 +68,8 @@ And a full request example using cURL would look like this:
         "companyId": 1,
         "interstitial": true,
         "domain":"google.com",
-        "ip": "182.21.122.189"
+        "ip": "182.21.122.189",
+        "test": true
       }'
 
 Handling the response
