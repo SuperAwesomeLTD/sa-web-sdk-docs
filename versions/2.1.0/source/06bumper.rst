@@ -1,5 +1,5 @@
 Bumper page
-================
+===========
 
 This section will show how to use the bumper element and how to customise it.
 
@@ -87,7 +87,7 @@ Example: in Node.js the header can be set using the following line of code:
     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://ads.superawesome.tv/');
 
 Forcing the bumper
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 Optionally, Publishers can choose for the bumper to always display when an ad is served on a placement.
 In order to enable the bumper, please use the following code:
