@@ -56,7 +56,7 @@ Also note that the source parameter of the script tag must only contain the plac
 Javascript object
 ^^^^^^^^^^^^^^^^^
 
-Finally, if you want to add the video as a Javascript object:
+If you want more control over your video ads you can add them as a Javascript object:
 
 .. code-block:: html
 
@@ -99,10 +99,61 @@ The AwesomeVideo function has three parameters:
   * the DOM element to render the video to
   * whether the whole video surface is clickable or not
 
+VAST tag
+^^^^^^^^
+
+Finally, if you want to plug our video sources into a 3rd party ad server of video player that supports `VAST <https://www.iab.com/guidelines/digital-video-ad-serving-template-vast-3-0/>`_,
+you can use our VAST tag integration.
+
+You can obtain it from the Dashboard, under the **Get Placements** button:
+
+.. image:: img/IMG_03_Video_3.png
+
+From there you can copy a VAST tag looking similar to this:
+
+.. code-block:: html
+
+    https://ads.superawesome.tv/v2/ad/30479?vast=true
+
+
+While this will be OK in most cases, you can also add a number of additional parameters to it that'll help both our
+reporting as well as the efficiency of campaigns:
+
+=========  =================  ===========
+Parameter  Values             Description
+=========  =================  ===========
+test       true / false       Enables or disables test ads
+bundle     com.example.myapp  The iOS / Android Bundle identifier. Only for mobile.
+device     phone / tablet     The type of device the request is made
+ua         Mozilla/5.0...     Override User Agent (Useful for server-to-server integration)
+ip         172.16.200.1       Override IP address (Useful for server-to-server integration)
+ct         1 - 6              wifi = 2, 2G = 4, 3G = 5, 4G = 6
+country    GB / CH / etc      Override country detected from IP Address
+lang       fr_CH              User phone language settings
+=========  =================  ===========
+
+Thus, a more complete VAST tag would look something similar to this:
+
+.. code-block:: html
+
+    https://ads.superawesome.tv/v2/ad/30479
+      ?vast=true
+      &test=false
+      &bundle=com.example.myapp
+      &device=tablet
+      &ua=Mozilla%2F5.0%20%28Linux%3B%20Android%204.0.4....Mobile%20Safari%2F535.19
+      &ip=172.16.200.1
+      &ct=2
+      &country=GB
+      &lang=en_GB
+
+
+Ideally these parameters would be filled out at runtime by dynamic macros specific to each ad server.
+
 Result
 ^^^^^^
 
-In both cases the result will be something similar to this:
+In all cases the result will be something similar to this:
 
 .. image:: img/IMG_03_Video_2.png
 
