@@ -1,0 +1,110 @@
+Server to server
+================
+
+If integrating through our JavaScript tags or SDK isn't sufficient for your needs, we now offer a new Server to Server integration.
+
+Making a request
+^^^^^^^^^^^^^^^^
+
+To be able to integrate, you'll need to do a **POST** request to the following endpoint:
+
+.. code-block:: html
+
+    https://ads.superawesome.tv/v2/exchange
+
+You will also have to set the request **Headers**:
+
+================ ================
+Header Parameter Value
+================ ================
+Content-Type     application/json
+================ ================
+
+And you'll need to pass a JSON object as the request **Body**. This object can have the following fields:
+
+================== ======== =================== =======
+Body Parameter     Required Example             Meaning
+================== ======== =================== =======
+placementId        yes      30472               Placement ID you want to request an ad for
+companyId          yes      1                   The ID of your company. Ask your account manager for it.
+userAgent          yes      Mozilla/5.0 (iP ... Current User Agent
+ip                 yes      182.21.122.189      Current IP Address
+applicationType    yes      web | app           Whether the request is for a website or mobile app
+bundle             yes      com.example.myapp   Required only if applicationType is **app**
+domain             yes      example.com         Required only if applicationType is **web**
+connectionType     no       2
+lang               no       en_US               Current Language and Locale
+interstitial       no       true | false        Force fullscreen presentation (for web)
+test               no       true | false        Whether to force a test creative or not
+================== ======== =================== =======
+
+Thus, an example request **Body** would look like this:
+
+.. code-block:: javascript
+
+    {
+      "placementId": 30472,
+      "userAgent": "Mozilla/5.0 (iPod; CPU iPhone OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3",
+      "applicationType":"web",
+      "companyId": 1,
+      "interstitial": true,
+      "domain":"google.com",
+      "ip": "182.21.122.189",
+      "test": true
+    }
+
+And a full request example using cURL would look like this:
+
+.. code-block:: shell
+
+    curl -X POST \
+      https://ads.superawesome.tv/v2/exchange \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/json' \
+      -d '{
+        "placementId": 30472,
+        "userAgent": "Mozilla/5.0 (iPod; CPU iPhone OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3",
+        "applicationType":"web",
+        "companyId": 1,
+        "interstitial": true,
+        "domain":"google.com",
+        "ip": "182.21.122.189",
+        "test": true
+      }'
+
+Handling the response
+^^^^^^^^^^^^^^^^^^^^^
+
+The response will contain a JSON object with the following fields:
+
+================== ========================================== =======
+Response Parameter Example                                    Meaning
+================== ========================================== =======
+placementId        30472                                      Placement ID you requested an ad for
+lineItem					 1116                                       Line Item ID of the ad served on this Placement ID
+creativeId         5858                                       Creative ID of the ad served on this Placement ID
+cpm                2.00                                       CPM cost
+currency           GBP                                        Currency for the CPM
+tag                <script type="text/javascript" src...      Tag to use in order to display the ad. Only for banner ads
+vast               http://ads.superawesome.tv/v2/video/vas... VAST tag to parse. Only for video ads
+================== ========================================== =======
+
+Thus, an example response would look like this:
+
+.. code-block:: javascript
+
+    {
+      "lineItemId": 1116,
+      "creativeId": 5858,
+      "placementId": 30472,
+      "cpm": "2.00",
+      "currency": "GBP",
+      "tag": "<script type=\"text/javascript\" src=\"http://ads.superawesome.tv/v2/js?sdkVersion=unknown&rnd=64325718&device=phone&flow=exchange&ua=Mozilla%2F5.0%20(iPod%3B%20CPU%20iPhone%20OS%205_0_1%20like%20Mac%20OS%20X)%20AppleWebKit%2F534.46%20(KHTML%2C%20like%20Gecko)%20Version%2F5.1%20Mobile%2F9A405%20Safari%2F7534.48.3&placementId=30472&lineItemId=1116&creativeId=5858&interstitial=true\"></script>"
+    }
+
+
+Usage
+^^^^^
+
+When you get the response back you can either use the **tag** parameter and inject in into your web page or feed it to a web view or, in case of video,
+you can pass the **vast** tag to your Video player.
