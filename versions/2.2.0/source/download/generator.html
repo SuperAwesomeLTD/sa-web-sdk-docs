@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>SA VAST Bumper generator v1.0</title>
+</head>
+<body>
+    <div style="width: 600px; line-height: 35px; text-align: center;">
+        <fieldset>
+            <legend>Bumper Customisation parameters:</legend>
+            Company Name: <input id="cname" type="text" size="70"><br />
+            Company Logo: <input id="clogo" type="text" size="71"><br>
+            Custom Bumper URL: <input id="curl" type="text" size="64">
+            Forced Bumper: <input id="cforce" type="checkbox"></input>
+        </fieldset>
+    </div>
+
+    <div style="width: 600px; line-height: 40px; text-align: center;">
+        <fieldset style="width: auto;">
+            <legend>Generate bumper code:</legend>
+            <button style="width: 100px; height: 30px;" onClick="collectData();">Generate</button><br />
+            Output: <input id="output" type="text" size="80">
+        </fieldset>
+    </div>
+
+    <div style="width: 600px; line-height: 40px;">
+        <fieldset style="width: auto;">
+            <legend>Errors</legend>
+            <div id="errors" style="color: red;"></div>
+        </fieldset>
+    </div>
+
+    <script type="text/javascript">
+      // RegExp
+      // Exluded: ./_:-@%
+      const specialChars = /[!#$^&*()+\=\[\]{};'"\\|,<>]/;
+      const jsCheck = /(javascript):+/;
+
+      function checkString(input) {
+        const isUrlDirty = specialChars.test(input);
+        const hasJSCode = jsCheck.test(input);
+        if (input.length == 0) {
+          return 'default';
+        } else if (input.length > 1 && !isUrlDirty && !hasJSCode) {
+          return input;
+        } else {
+          document.getElementById('errors').innerHTML += "Value '"+input+"' is not a legal string.<br />";
+          return 'default';
+        }
+      }
+
+      function parseBumperParams(bumperEnabled, companyName, companyLogo, customBumper) {
+        try {
+          var output = '';
+          output += '&bumperEnabled=' + (bumperEnabled || false);
+          output += '&companyName=' + encodeURIComponent(checkString(companyName));
+          output += '&companyLogo=' + encodeURIComponent(checkString(companyLogo));
+          output += '&customBumper=' + encodeURIComponent(checkString(customBumper));
+          document.getElementById('output').value = output;
+        } catch (e) {
+          document.getElementById('errors').innerHTML = "There is a problem with the generator, please contact the support.";
+        }
+      }
+
+      function collectData() {
+        document.getElementById('errors').innerHTML = '';
+        var cforce = document.getElementById("cforce").checked;
+        var cname = document.getElementById("cname").value;
+        var clogo = document.getElementById("clogo").value;
+        var curl = document.getElementById("curl").value;
+        parseBumperParams(cforce, cname, clogo, curl);
+      }
+    </script>
+</body>
+</html>
