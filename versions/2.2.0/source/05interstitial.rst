@@ -18,6 +18,37 @@ To add an interstitial ad and show it when the page first loads, add it as a pla
 
 Notice the **interstitial=true** parameter.
 
+Close action
+^^^^^^^^^^^^
+
+AwesomeAds Web SDK creates a close button (close image in the corner of the screen) which removes advert and related elements from the document.
+
+This action will also send a cross-domain post message to the top-most window that can be used to trigger custom code or close the main context.
+In order to catch the message please implement a receiver on the Window object e.g.:
+
+.. code-block:: html
+
+    <script>
+        if (window.addEventListener) {
+            window.addEventListener("message", onMessage, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onmessage", onMessage, false);
+        }
+
+        function onMessage(event) {
+            if (event.data && event.data.function === 'aa_close_button') {
+                console.log('* Received message from SA Web SDK. Interstitial ad has been closed.');
+                console.log(event.data);
+                // call your methods here e.g. foo();
+            }
+        }
+    </script>
+
+Here is the console output in the Developer Tools in the Chrome browser:
+
+.. image:: img/IMG_05_Console_1.png
+
 Javascript object
 ^^^^^^^^^^^^^^^^^
 
